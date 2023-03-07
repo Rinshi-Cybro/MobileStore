@@ -1,0 +1,24 @@
+{% extends 'storehome.html' %}
+{% block shome %}
+    <h1 class="bg-success text-center">Products</h1>
+
+    <div class="card-columns">
+        {%for i in data%}
+            <div class="card" style="width:400px">
+            {%if i.image%}
+            <img class="card-img-top" src="{{i.image.url}}" alt="card-img">
+            {%endif%}
+            <div class="card-body">
+                <h3 class="card-title">{{i.name}}</h3>
+                <p class="card-text">Model :<b>{{i.model}}</b></p>
+                <p class="card-text">Description :<b>{{i.description}}</b></p>
+                <p class="card-text">Price :<b>{{i.price}}</b></p>
+                <p class="card-text">Color :<b>{{i.color}}</b></p>
+
+                <a href="{% url 'deltprdt' i.id %}" class="btn btn-danger">DELETE</a>
+                <a href="{% url 'editprdt' i.id %}" class="btn btn-warning">EDIT</a>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+{%endblock shome%}
